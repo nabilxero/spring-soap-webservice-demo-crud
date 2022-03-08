@@ -14,7 +14,7 @@ import org.springframework.xml.xsd.XsdSchema;
 
 @EnableWs
 @Configuration
-public class SoapWebServiceConfig extends WsConfigurerAdapter {
+public class WebServiceConfig extends WsConfigurerAdapter {
 
     @Bean
     public ServletRegistrationBean<MessageDispatcherServlet> messageDispatcherServlet(ApplicationContext context) {
@@ -26,14 +26,30 @@ public class SoapWebServiceConfig extends WsConfigurerAdapter {
 
     @Bean
     public XsdSchema userSchema() {
-        return new SimpleXsdSchema(new ClassPathResource("users.xsd"));
+        return new SimpleXsdSchema(new ClassPathResource("xsd/user.xsd"));
     }
 
+    @Bean
+    public XsdSchema employeeSchema() {
+        return new SimpleXsdSchema(new ClassPathResource("xsd/employee.xsd"));
+    }
+
+    @Bean("userInfo")
     public DefaultWsdl11Definition defaultWsdl11Definition(XsdSchema userSchema) {
         DefaultWsdl11Definition definition = new DefaultWsdl11Definition();
         definition.setLocationUri("/soapWS");
         definition.setPortTypeName("UserServicePort");
-        definition.setTargetNamespace("com/example/springsoapwebservicedemo/api/loanEligibility");
+        definition.setSchema(userSchema);
+        definition.setTargetNamespace("com/example/springsoapwebservicedemo/jaxb/userInfo");
+        return definition;
+    }
+    @Bean("employeeInfo")
+    public DefaultWsdl11Definition defaultWsdl11DefinitionForEmployeeInfo(XsdSchema employeeSchema) {
+        DefaultWsdl11Definition definition = new DefaultWsdl11Definition();
+        definition.setLocationUri("/soapWS");
+        definition.setPortTypeName("EmployeeService");
+        definition.setSchema(employeeSchema);
+        definition.setTargetNamespace("com/example/springsoapwebservicedemo/jaxb/userInfo");
         return definition;
     }
 }

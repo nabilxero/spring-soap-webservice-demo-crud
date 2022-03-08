@@ -1,6 +1,6 @@
 package com.example.springsoapwebservicedemo.service;
 
-import com.example.springsoapwebservicedemo.api.loaneligibility.User;
+import com.example.springsoapwebservicedemo.jaxb.userinfo.User;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;

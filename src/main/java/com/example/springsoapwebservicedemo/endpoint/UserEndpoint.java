@@ -1,8 +1,8 @@
 package com.example.springsoapwebservicedemo.endpoint;
 
-import com.example.springsoapwebservicedemo.api.loaneligibility.GetUserRequest;
-import com.example.springsoapwebservicedemo.api.loaneligibility.GetUserResponse;
-import com.example.springsoapwebservicedemo.api.loaneligibility.User;
+import com.example.springsoapwebservicedemo.jaxb.userinfo.GetUserRequest;
+import com.example.springsoapwebservicedemo.jaxb.userinfo.GetUserResponse;
+import com.example.springsoapwebservicedemo.jaxb.userinfo.User;
 import com.example.springsoapwebservicedemo.service.UserService;
 import org.springframework.ws.server.endpoint.annotation.Endpoint;
 import org.springframework.ws.server.endpoint.annotation.PayloadRoot;
@@ -18,7 +18,7 @@ public class UserEndpoint {
         this.userService = userService;
     }
 
-    @PayloadRoot(namespace = "com/example/springsoapwebservicedemo/api/loanEligibility", localPart = "getUserRequest")
+    @PayloadRoot(namespace = "com/example/springsoapwebservicedemo/jaxb/userInfo", localPart = "getUserRequest")
     @ResponsePayload
     public GetUserResponse getUserRequest(@RequestPayload GetUserRequest getUserRequest) {
         GetUserResponse response = new GetUserResponse();

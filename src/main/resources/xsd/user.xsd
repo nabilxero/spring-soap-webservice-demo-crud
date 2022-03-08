@@ -1,6 +1,6 @@
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
-           targetNamespace="com/example/springsoapwebservicedemo/api/loanEligibility"
-           xmlns:tns="com/example/springsoapwebservicedemo/api/loanEligibility"
+           targetNamespace="com/example/springsoapwebservicedemo/jaxb/userInfo"
+           xmlns:tns="com/example/springsoapwebservicedemo/jaxb/userInfo"
            elementFormDefault="qualified">
     <xs:element name="getUserRequest">
         <xs:complexType>
